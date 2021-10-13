@@ -28,10 +28,10 @@ export default class ReadStoryScreen extends React.Component {
       var stories = db.collection("stories")
         .get().then((querySnapshot)=> {
           querySnapshot.forEach((doc)=> {
-              // doc.data() is never undefined for query doc snapshots
+              // doc.data() nunca está indefinida para la consulta doc instantáneas
               
               allStories.push(doc.data())
-              console.log('this are the stories',allStories)
+              console.log('estas son las historias',allStories)
           })
           this.setState({allStories})
         })
@@ -43,9 +43,9 @@ export default class ReadStoryScreen extends React.Component {
 
 
   SearchFilterFunction(text) {
-    //passing the inserted text in textinput
+    //pasa el texto insertado en textinput
     const newData = this.state.allStories.filter((item)=> {
-      //applying filter for the inserted text in search bar
+      //aplicando filtro para el texto insertado en la barra de búsqueda
       const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
       //const textData = text.toUpperCase();
       // const textData = text.toUppercase();
@@ -67,13 +67,13 @@ export default class ReadStoryScreen extends React.Component {
            <Header 
                 backgroundColor = {'pink'}
                 centerComponent = {{
-                    text : 'Bed Time Stories',
-                    style : { color: 'white', fontSize: 20}
+                    text : 'Historias para Dormir',
+                    style : { color: 'white', fontSize: 15}
                 }}
             />
           <View styles ={{height:20,width:'100%'}}>
               <SearchBar
-              placeholder="Type Here..."
+              placeholder="Escribe aquí..."
              
              // onChangeText={text => this.SearchFilterFunction(text)}
              // onChangeText={() => this.SearchFilterFunction(text)}
@@ -91,8 +91,8 @@ export default class ReadStoryScreen extends React.Component {
                 //renderItem={({ item }) => {
                 // renderItem=>{({}){
                   <View style={styles.itemContainer}>
-                    <Text>  Title: {item.title}</Text>
-                    <Text>  Author : {item.author}</Text>
+                    <Text>  Título: {item.title}</Text>
+                    <Text>  Autor : {item.author}</Text>
                   </View>
                 )}
                 keyExtractor={(item, index) => index.toString()}
